@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const authMiddleware = require('../middleware/authMiddleware');
-const {authorizeRole} = require('../middleware/authorizationMiddleware');
+const { authorizeRole } = require('../middleware/authorizationMiddleware');
 const { productImage } = require('../middleware/uploadMiddleware');
 const {
   createProduct,
   updateProduct,
   deleteProduct,
   getProduct,
-  getProducts
+  getProducts,
+  getAllProducts,
 } = require('../controllers/productController');
 
 /**
@@ -61,5 +62,18 @@ router.get('/:id', getProduct);
  * @returns {Object} response - The response object containing an array of products
  */
 router.get('/', getProducts);
+
+
+/**
+ * @description Get all products
+ * @route GET /api/products
+ * @access Public
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @returns {Object} response - The response object containing an array of products
+ */
+router.get('/getallproduct', getAllProducts);
+
+
 
 module.exports = router;

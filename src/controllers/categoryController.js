@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-const { model } = require("mongoose");
-const Category = require("../models/categoryModel");
-
-const registerCategory = async (req, res) => {
-  const { name, description } = req.body;
-  // const userEmail = req.body.email;
-
-  try {
-    let category = await Category.findOne({ name });
-
-    if (category) {
-      return res.status(400).json({ msg: "Category already exists" });
-    }
-
-    category = new Category({
-      name: name,
-      description: description
-    });
-
-    await category.save();
-    res.status(201).json({ msg: "Category created successfully" });
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send({ msg: error.message });
-  }
-};
-
-module.exports = {
-  registerCategory
-};
-=======
 const Category = require("../models/categoryModel");
 
 //  controller for adding a category
@@ -134,4 +102,3 @@ module.exports = {
   updateCategory,
   deleteCategory,
 };
->>>>>>> 600ed317b002dcb513a2acee481ac989ca266944

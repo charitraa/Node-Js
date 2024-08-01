@@ -30,7 +30,7 @@ const createProduct = async (req, res) => {
       rating,
       numReviews,
       countInStock,
-     
+
     };
 
     if (req.file) {
@@ -65,7 +65,7 @@ const updateProduct = async (req, res) => {
       countInStock,
     } = req.body;
     let updateData = {
-      category:category,
+      category: category,
       name,
       price,
       description,
@@ -158,10 +158,19 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json({ msg: "product are found", products: products });
+  } catch (error) {
+    sendErrorResponse(res, error);
+  }
+}
 module.exports = {
   createProduct,
   updateProduct,
   getProducts,
   getProduct,
   deleteProduct,
+  getAllProducts
 };

@@ -10,13 +10,13 @@ const profileSchema = new mongoose.Schema({
     bio: {
         type: String,
         maxlength: 500,
-        required: true
+        required: null
     },
     profileImage: {
         type: String,
-        required:true// Store the URL of the uploaded image
+        required: null// Store the URL of the uploaded image
     },
-     
+
 });
 
 module.exports = mongoose.model('Profile', profileSchema);
