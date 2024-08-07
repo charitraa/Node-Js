@@ -53,7 +53,7 @@ const RegistrationForm = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-       const response=  await axios.post(
+        const response = await axios.post(
           "http://localhost:5000/api/auth/register",
           {
             name: userData.username,
@@ -71,7 +71,8 @@ const RegistrationForm = () => {
       } catch (error) {
         // console.error(error.response);
         // console.error(error.message);
-        toast.error(error.response.data.msg);
+        console.log(error);
+        toast.error(error.message);
       }
     }
   };
